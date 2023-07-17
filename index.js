@@ -6,7 +6,6 @@ import hotels from "./routes/Hotels.js";
 import rooms from "./routes/Rooms.js";
 import routes from "./routes/Routes.js";
 import cookieParser from 'cookie-parser';
-const CLOUD_URL="mongodb+srv://rewqw12123:rahul123@cluster1.2rp3aic.mongodb.net/?retryWrites=true&w=majority"
 dotenv.config();
 const app=express();
 const port=4000;
@@ -20,7 +19,7 @@ app.get('/', (req, res) => {
   
   const connect=async()=>{
  try{
-    await mongoose.connect(CLOUD_URL);
+    await mongoose.connect(process.env.CLOUD_URL);
     console.log("connected to mongodb");
  }catch(error){
     throw error  
