@@ -3,7 +3,7 @@ import Routes from "../Models/Routes.js";
 import bcrypt from "bcryptjs";
 import jwt  from "jsonwebtoken";
 const router=express.Router();
-
+localStorage.setItem("user"," ")
   router.post('/register', async(req, res) => {
     
     try {
