@@ -30,9 +30,9 @@ const hash = bcrypt.hashSync(req.body.password, salt);
     
      const ispassword=await bcrypt.compare(req.body.password,user.password);
       if(!ispassword) return res.status(400).json("Wrong Username or Password");
-      const token=jwt.sign({id:user._id,isadmin:user.isadmin},"hh");
-      const {password,isadmin,...otherDetails}=user._doc;
-      res.cookie("access_token",token,{httpOnly:true}).status(200).json({details:{...otherDetails},isadmin});
+      const token=jwt.sign({id:user._id},"hh");
+      const {password,...otherDetails}=user._doc;
+      res.cookie("access_token",token,{httpOnly:true}).status(200).json({details:{...otherDetails}});
 
       
     } catch (error) {
